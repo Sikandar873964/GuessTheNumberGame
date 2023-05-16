@@ -75,11 +75,15 @@ private:
 };
 
 
-
-
-
 int main() {
-	std::cout << "Hello World" << std::endl;
 
+    int maxNumber;
+    std::cout << "Welcome to Guess The Number game!" << std::endl;
+    std::cout << "Enter the maximum number for the game: ";
+    std::cin >> maxNumber;
+
+    // Use smart pointer to manage the game object
+    std::unique_ptr<Game> game = std::make_unique<Game>(maxNumber);
+    game->play();
 	return 0;
 }
