@@ -4,15 +4,16 @@
 
 class Game {
 public:
+    // Constructor that sets up a new game with a random number between 1 and maxNumber
     explicit Game(int maxNumber) : maxNumber(maxNumber)
     {
-        // Initialize random number generator
+        // Initialize the random number generator
         randomEngine.seed(std::random_device()());
+        // Generate the random number that the player needs to guess
         randomNumber = std::uniform_int_distribution<int>(1, maxNumber)(randomEngine);
     }
 
-
-
+    // The main game loop where the player guesses the number
     void play()
     {
         int guess;
@@ -20,6 +21,7 @@ public:
         int capacity = 5;                 // Initial capacity of the dynamic array
         int* guesses = new int[capacity]; // Dynamic array to store guesses
 
+        // Infinite loop until the correct guess is made
         while (true)
         {
             std::cout << "Enter your guess (1-" << maxNumber << "): ";
@@ -67,13 +69,11 @@ public:
         delete[] guesses; // Deallocate the dynamic array
     }
 
-
 private:
-    int maxNumber;
-    int randomNumber;
-    std::default_random_engine randomEngine;
+    int maxNumber;  // Maximum number that can be guessed
+    int randomNumber;  // Randomly generated number that player must guess
+    std::default_random_engine randomEngine;  // Random number generator
 };
-
 
 int main() {
 
@@ -85,5 +85,5 @@ int main() {
     // Use smart pointer to manage the game object
     std::unique_ptr<Game> game = std::make_unique<Game>(maxNumber);
     game->play();
-	return 0;
+    return 0;
 }
