@@ -69,7 +69,11 @@ public:
 
 
 private:
+    int maxNumber;
+    int randomNumber;
+    std::default_random_engine randomEngine;
 };
+
 
 
 
