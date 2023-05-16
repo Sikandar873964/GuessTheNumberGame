@@ -4,7 +4,15 @@
 
 class Game {
 public:
-	private
+    explicit Game(int maxNumber) : maxNumber(maxNumber)
+    {
+        // Initialize random number generator
+        randomEngine.seed(std::random_device()());
+        randomNumber = std::uniform_int_distribution<int>(1, maxNumber)(randomEngine);
+    }
+
+
+private:
 };
 
 
